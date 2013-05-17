@@ -34,6 +34,10 @@ And there are special properties, `env` and `dir`, which the child process uses 
 
 Examples are in the `examples/` dir, also check out the tests
 
+## dependencies
+
+python, firefox
+
 ## todo
 
 Docs, better tests, currently requires FF installation to run, should use xvfb for headless tests

@@ -44,7 +44,6 @@ function execute (command, options) {
   var dir = options.dir || __dirname;
   var env = _.extend({}, ENV, options.env || {});
   var args = optionsToArgs(options);
-  console.log([CFX_PATH].concat(command).concat(args), dir, env);
   return spawn('python', [CFX_PATH].concat(command).concat(args), {
     cwd: dir,
     env: env
