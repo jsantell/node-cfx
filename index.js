@@ -1,5 +1,20 @@
 var spawn = require('child_process').spawn;
 var _ = require('underscore');
+var when = require('when');
+
+var SDK_PATH = __dirname + '/cfx';
+var CFX_PATH = SDK_PATH + '/bin/cfx';
+var ENV = {
+  PYTHONPATH: SDK_PATH + '/python-lib/',
+  CUDDLEFISH_ROOT: SDK_PATH,
+  PATH: process.env.PATH
+};
+
+var DEFAULTS = {
+  pkgdir: SDK_PATH
+};
+
+process.chdir(ENV.CUDDLEFISH_ROOT);
 
 var ARG_MAP = {
   // cfx run 
@@ -18,29 +33,28 @@ var ARG_MAP = {
   'updateLink': '--update-link'
 }
 
-exports.docs = function (){};
-exports.init = function (){};
+exports.docs = execute.bind(null, 'docs');
+exports.init = execute.bind(null, 'init');
+exports.run = execute.bind(null, 'run');
+exports.testall = execute.bind(null, 'testall');
+exports.test = execute.bind(null, 'test');
 
-exports.run = function (dir, options) {
-  return execute(dir, 'run', optionsToArgs(options));
-};
-
-exports.test = function (dir, options) {
-  return execute(dir, 'test', optionsToArgs(options));
-};
-
-exports.testall = function (dir, options) {
-  return execute(dir, 'testall', optionsToArgs(options));
-};
-
-function execute (dir, command, options) {
-  var proc = spawn('cfx', [].concat(command).concat(options), {
-    cwd: dir
+function execute (command, options) {
+  options = options || {};
+  var dir = options.dir || __dirname;
+  var env = _.extend({}, ENV, options.env || {});
+  var args = optionsToArgs(options);
+  console.log([CFX_PATH].concat(command).concat(args), dir, env);
+  return spawn('python', [CFX_PATH].concat(command).concat(args), {
+    cwd: dir,
+    env: env
   });
 }
 
 function optionsToArgs (options) {
-  return _.reduce(options, function (mem, key) {
-    return ARG_MAP[key] + ' ' + options[key] + ' ';
-  }, '');
+  return _.reduce(_.extend({}, DEFAULTS, options), function (mem, val, key) {
+    if (key !== 'dir' && key !== 'env')
+      mem.push(ARG_MAP[key] + '=' + val);
+    return mem;
+  }, []);
 }
