@@ -41,3 +41,7 @@ python, firefox
 ## todo
 
 Docs, better tests, currently requires FF installation to run, should use xvfb for headless tests
+
+## license
+
+MIT License
