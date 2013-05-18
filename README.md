@@ -1,7 +1,7 @@
 node-cfx
 ======
 
-Programatically use cfx in ndoe
+Programatically use cfx in node
 
 ## methods
 
