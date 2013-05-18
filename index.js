@@ -1,6 +1,5 @@
 var spawn = require('child_process').spawn;
 var _ = require('underscore');
-var when = require('when');
 
 var SDK_PATH = __dirname + '/addon-sdk';
 var CFX_PATH = SDK_PATH + '/bin/cfx';
