@@ -12,6 +12,7 @@ currently supported methods, all return child process
 * run
 * test
 * testall
+* xpi
 
 ## options
 

@@ -38,6 +38,7 @@ exports.init = execute.bind(null, 'init');
 exports.run = execute.bind(null, 'run');
 exports.testall = execute.bind(null, 'testall');
 exports.test = execute.bind(null, 'test');
+exports.xpi = execute.bind(null, 'xpi');
 
 function execute (command, options) {
   options = options || {};
