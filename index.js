@@ -24,6 +24,7 @@ var ARG_MAP = {
   'profile': '--profiledir',
   'pkgdir': '--pkgdir',
   'static': '--static-args',
+  'addons': '--addons',
   'app': '--app',
   // cfx test
   'filter': '--filter',
