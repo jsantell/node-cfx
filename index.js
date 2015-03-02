@@ -6,7 +6,8 @@ var CFX_PATH = SDK_PATH + '/bin/cfx';
 var ENV = {
   PYTHONPATH: SDK_PATH + '/python-lib/',
   CUDDLEFISH_ROOT: SDK_PATH,
-  PATH: process.env.PATH
+  PATH: process.env.PATH,
+  DISPLAY: process.env.DISPLAY
 };
 
 var DEFAULTS = {
