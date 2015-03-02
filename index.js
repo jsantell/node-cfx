@@ -16,7 +16,7 @@ var DEFAULTS = {
 process.chdir(ENV.CUDDLEFISH_ROOT);
 
 var ARG_MAP = {
-  // cfx run 
+  // cfx run
   'binary': '--binary',
   'extras': '--extra-packages',
   'config': '--use-config',
@@ -45,7 +45,7 @@ function execute (command, options) {
   var dir = options.dir || __dirname;
   var env = _.extend({}, ENV, options.env || {});
   var args = optionsToArgs(options);
-  return spawn('python', [CFX_PATH].concat(command).concat(args), {
+  return spawn('python2', [CFX_PATH].concat(command).concat(args), {
     cwd: dir,
     env: env
   });
