@@ -14,8 +14,6 @@ var DEFAULTS = {
   pkgdir: SDK_PATH
 };
 
-process.chdir(ENV.CUDDLEFISH_ROOT);
-
 var ARG_MAP = {
   // cfx run 
   'binary': '--binary',
