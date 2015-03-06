@@ -3,6 +3,8 @@ node-cfx
 
 Programatically use cfx in node
 
+Developing for Firefox 38+? Check out [jpm](https://github.com/mozilla/jpm) as [cfx is being deprecated](https://blog.mozilla.org/addons/2015/02/26/jpm-replaces-cfx-for-firefox-38/).
+
 ## methods
 
 currently supported methods, all return child process
