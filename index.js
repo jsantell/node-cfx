@@ -7,7 +7,8 @@ var ENV = {
   PYTHONPATH: SDK_PATH + '/python-lib/',
   CUDDLEFISH_ROOT: SDK_PATH,
   PATH: process.env.PATH,
-  DISPLAY: process.env.DISPLAY
+  DISPLAY: process.env.DISPLAY,
+  PYTHON: process.env.PYTHON
 };
 
 var DEFAULTS = {
@@ -41,10 +42,11 @@ exports.xpi = execute.bind(null, 'xpi');
 
 function execute (command, options) {
   options = options || {};
+  var python = options.python || ENV.PYTHON || 'python';
   var dir = options.dir || __dirname;
   var env = _.extend({}, ENV, options.env || {});
   var args = optionsToArgs(options);
-  return spawn('python2', [CFX_PATH].concat(command).concat(args), {
+  return spawn(python, [CFX_PATH].concat(command).concat(args), {
     cwd: dir,
     env: env
   });
